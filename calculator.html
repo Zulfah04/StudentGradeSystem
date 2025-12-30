@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPA Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    
+</head>
+<body>
+    <div class="wrapper">
+        
+        <nav id="sidebar">
+            <div class="sidebar-user-profile">
+                <img src="jpg/profile.jpg" class="sidebar-user-img" alt="User">
+                <div class="mt-3 text-center">
+                    <h6 class="mb-0 text-white fw-bold">Alya Zulfah</h6>
+                    <small class="text-white-50">Student ID: 2025180221</small>
+                </div>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="profile.html">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span class="title">My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="results.html">
+                        <span class="icon"><i class="fas fa-scroll"></i></span>
+                        <span class="title">My Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="assessment.html">
+                        <span class="icon"><i class="fas fa-tasks"></i></span>
+                        <span class="title">Assessment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="history.html">
+                        <span class="icon"><i class="fas fa-history"></i></span>
+                        <span class="title">History</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="calculator.html">
+                        <span class="icon"><i class="fas fa-calculator"></i></span>
+                        <span class="title">GPA Calc</span>
+                    </a>
+                </li>
+
+                <li style="margin-top: 50px;">
+                    <a href="#" onclick="logout()">
+                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            
+            <nav class="top-navbar">
+                <div class="brand-wrapper">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-brown me-2 border-0">
+                        <i class="fas fa-bars fa-lg" style="color: #795548;"></i>
+                    </button>
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/2997/2997322.png" alt="UiTM Logo" class="logo-img">
+                    
+                    <span class="brand-text">MyGrade</span>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-bell me-3 text-muted"></i>
+                </div>
+            </nav>
+
+            <div class="card-modern calc-wrapper">
+                <div class="text-center mb-4">
+                    <h4 class="fw-bold text-theme">Target GPA Calculator</h4>
+                    <p class="text-muted">Simulate your results to plan your semester.</p>
+                </div>
+
+                <div id="calcRows">
+                    <div class="row align-items-center calc-row mb-2">
+                        <div class="col-5">
+                            <input type="text" class="form-control calc-input" placeholder="Subject Name">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control calc-input credit-input" placeholder="Credit" value="" min="1">
+                        </div>
+                        <div class="col-3">
+                            <select class="form-select calc-input grade-select">
+                                <option value="4.00">A+</option>
+                                <option value="4.00">A</option>
+                                <option value="3.67">A-</option>
+                                <option value="3.33">B+</option>
+                                <option value="3.00">B</option>
+                                <option value="2.67">B-</option>
+                                <option value="2.33">C+</option>
+                                <option value="2.00">C</option>
+                                <option value="1.67">C-</option>
+                                <option value="1.33">D+</option>
+                                <option value="1.00">D</option>
+                                <option value="0.00">F</option>
+                            </select>
+                        </div>
+                        <div class="col-2 text-center">
+                            <button class="btn btn-sm btn-delete rounded-circle" onclick="removeRow(this)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-theme btn-sm rounded-pill" onclick="addSubjectRow()">
+                        <i class="fas fa-plus me-1"></i> Add Subject
+                    </button>
+                    <button class="btn btn-theme rounded-pill px-4" onclick="calculateCustomGPA()">
+                        Calculate
+                    </button>
+                </div>
+
+                <div class="result-container shadow-sm mt-4 p-4 text-center text-white rounded-3 bg-theme">
+                    <h6 class="mb-1 text-white-50">PROJECTED GPA</h6>
+                    <h1 class="fw-bold mb-0" id="gpaDisplay">0.00</h1>
+                    <small id="totalCreditsDisplay" class="text-white-50 mt-2 d-block">Total Credits: 0</small>
+                </div>
+            </div>
+
+            <footer class="main-footer w-100 text-center pb-4 pt-3">
+                &copy; 2025 <strong>UiTM Student Portal</strong>. All rights reserved.
+                <br>
+                <small>Designed for IMS566 Project</small>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // 1. Function to Add a New Subject Row
+        function addSubjectRow() {
+            const container = document.getElementById('calcRows');
+            const newRow = document.createElement('div');
+            newRow.className = 'row align-items-center calc-row mb-2'; 
+            
+            // HTML structure for the new row
+            newRow.innerHTML = `
+                <div class="col-5">
+                    <input type="text" class="form-control calc-input" placeholder="Subject Name">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="form-control calc-input credit-input" placeholder="Cr" value="3" min="1">
+                </div>
+                <div class="col-3">
+                    <select class="form-select calc-input grade-select">
+                        <option value="4.00">A+</option>
+                        <option value="4.00">A</option>
+                        <option value="3.67">A-</option>
+                        <option value="3.33">B+</option>
+                        <option value="3.00">B</option>
+                        <option value="2.67">B-</option>
+                        <option value="2.33">C+</option>
+                        <option value="2.00">C</option>
+                        <option value="1.67">C-</option>
+                        <option value="1.33">D+</option>
+                        <option value="1.00">D</option>
+                        <option value="0.00">F</option>
+                    </select>
+                </div>
+                <div class="col-2 text-center">
+                    <button class="btn btn-sm btn-delete rounded-circle" onclick="removeRow(this)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `;
+            container.appendChild(newRow);
+        }
+
+        // 2. Function to Remove a Row
+        function removeRow(button) {
+            // Find the closest row element to the clicked button
+            const row = button.closest('.calc-row');
+            const totalRows = document.querySelectorAll('.calc-row').length;
+            
+            // Prevent deleting if it is the last remaining row
+            if(totalRows > 1) {
+                row.remove();
+                calculateCustomGPA(); // Auto-recalculate after deletion
+            } else {
+                alert("You need at least one subject!");
+            }
+        }
+
+        // 3. Function to Calculate GPA [Formula: Total Points / Total Credits]
+        function calculateCustomGPA() {
+            const rows = document.querySelectorAll('.calc-row');
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            rows.forEach(row => {
+                const creditInput = row.querySelector('.credit-input');
+                const gradeSelect = row.querySelector('.grade-select');
+
+                const credit = parseFloat(creditInput.value) || 0;
+                const gradePoint = parseFloat(gradeSelect.value) || 0;
+
+                if (credit > 0) {
+                    totalPoints += (gradePoint * credit);
+                    totalCredits += credit;
+                }
+            });
+
+            // Calculate GPA (Rounded to 2 decimal places)
+            const gpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
+            
+            // Update the display
+            document.getElementById('gpaDisplay').innerText = gpa;
+            document.getElementById('totalCreditsDisplay').innerText = `Total Credits: ${totalCredits}`;
+        }
+    </script>
+</body>
+</html>

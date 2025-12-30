@@ -1,0 +1,28 @@
+/* =========================================
+   History Page Styles
+   ========================================= */
+
+/* Main container for each semester block */
+.history-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;      /* Rounded corners */
+    margin-bottom: 20px;      /* Spacing between semester blocks */
+    overflow: hidden;         /* Ensures content stays within rounded corners */
+}
+
+/* Dark header bar for Semester Title */
+.history-header {
+    background: #343a40;      /* Dark grey background */
+    color: white;
+    padding: 15px 20px;
+    
+    /* Layout: Pushes title to left and GPA to right */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Highlight style for the GPA value inside the header */
+.history-gpa {
+    font-weight: bold;
+    color: #4cc9f0;           /* Bright Cyan color for emphasis */
+}

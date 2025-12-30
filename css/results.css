@@ -1,0 +1,65 @@
+/* =========================================
+   1. Section Titles
+   ========================================= */
+.results-title {
+    color: #795548; /* Main Brown Theme */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   2. Custom Table Styling
+   ========================================= */
+.custom-table {
+    vertical-align: middle; /* Vertically centers text in all cells */
+}
+
+.custom-table thead th {
+    background-color: #faf9f8; /* Very light background for headers */
+    color: #9c7363;            /* Muted brown text */
+    border-bottom: 2px solid #efebe9;
+    font-weight: 600;
+}
+
+/* =========================================
+   3. Grade Badges (Pills)
+   ========================================= */
+.grade-badge {
+    padding: 6px 14px;
+    border-radius: 30px; /* Fully rounded pill shape */
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Badge Color Variants */
+.bg-grade-a { 
+    background-color: #d1fae5; 
+    color: #065f46; /* Green for excellent grades */
+}
+
+.bg-grade-b { 
+    background-color: #fef3c7; 
+    color: #92400e; /* Yellow/Orange for good grades */
+}
+
+.bg-grade-c { 
+    background-color: #fee2e2; 
+    color: #991b1b; /* Red for lower grades */
+}
+
+/* =========================================
+   4. GPA Summary Box (Bottom Card)
+   ========================================= */
+.gpa-box {
+    /* Gradient background from light brown to dark brown */
+    background: linear-gradient(45deg, #af8f82, #795548);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    
+    /* Flexbox layout to separate GPA and Total Credits */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,70 @@
+/* =========================================
+   1. Global Overrides
+   ========================================= */
+h4 {
+    color: #5d4037 !important; /* Force Brown Color */
+    font-weight: 800 !important; /* Extra Bold */
+}
+
+/* =========================================
+   2. Assessment Card Component
+   ========================================= */
+.assessment-card {
+    background-color: #fff;
+    border-left: 5px solid #795548; /* Main brown accent stripe */
+    border-radius: 8px; 
+    transition: 0.3s; /* Smooth transition for hover effects */
+    overflow: hidden; 
+    margin-bottom: 30px; /* Spacing between multiple cards */
+}
+
+/* Hover Effect: Lift card and add shadow */
+.assessment-card:hover {
+    box-shadow: 0 10px 30px rgba(93, 64, 55, 0.15); 
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   3. Card Header Section
+   ========================================= */
+.course-header {
+    display: flex;
+    justify-content: space-between; /* Pushes title and badge to opposite sides */
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #d7ccc8; 
+    background-color: #efebe9; 
+}
+
+/* Title styling inside the header */
+.course-header h5 {
+    color: #5d4037;
+    margin-bottom: 2px;
+}
+
+/* =========================================
+   4. Status Badges
+   ========================================= */
+/* Base Badge Styles */
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px; /* Pill shape */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Variant: Ongoing Status (Blue) */
+.status-ongoing { 
+    background: #e3f2fd; 
+    color: #1565c0; 
+    border: 1px solid #bbdefb;
+}
+
+/* Variant: Completed Status (Green) */
+.status-completed { 
+    background: #e8f5e9; 
+    color: #2e7d32; 
+    border: 1px solid #c8e6c9;
+}

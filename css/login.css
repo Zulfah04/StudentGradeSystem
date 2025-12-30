@@ -1,0 +1,99 @@
+/* =========================================
+   1. Fonts & Global Layout
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    
+    /* Flexbox to center the login card vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Prevent scrollbars from the scaled blurred background */
+    overflow: hidden; 
+    
+    /* Needed for the absolute positioning of the pseudo-element */
+    position: relative; 
+}
+
+/* =========================================
+   2. Blurred Background Logic
+   ========================================= */
+/* We use a pseudo-element (::before) to apply the blur 
+   only to the background image, not the login form itself. */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url('https://i0.wp.com/live.staticflickr.com/8055/8114667275_499586079a_b.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    /* 👇 Adjust blur amount here 
+    filter: blur(10px);
+    
+    /* Puts the background behind the login card */
+    z-index: -1;
+    
+    /* Scales the image slightly to hide blurred edges / white borders */
+    transform: scale(1.1);
+}
+
+/* =========================================
+   3. Login Card Container
+   ========================================= */
+.login-card {
+    background: white; /* Keep card solid white */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Deep shadow for pop effect */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative; /* Ensures card sits on top of blurred background */
+}
+
+/* Logo Styling */
+.login-card .navbar-logo-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* =========================================
+   4. Form Elements
+   ========================================= */
+/* Input Fields */
+.form-control {
+    background: #f4f4f4;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Login Button (Brown Theme) */
+.btn-login {
+    background: #795548;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s; /* Smooth hover transition */
+}
+
+.btn-login:hover {
+    background: #5D4037; /* Darker brown on hover */
+}
